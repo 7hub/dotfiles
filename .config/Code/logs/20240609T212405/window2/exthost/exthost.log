@@ -1,0 +1,4 @@
+2024-06-09 21:24:08.467 [info] Extension host with pid 45202 started
+2024-06-09 21:24:08.586 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-06-09 21:24:08.602 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-06-09 21:24:08.697 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
