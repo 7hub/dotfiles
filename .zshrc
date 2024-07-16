@@ -110,3 +110,5 @@ alias y="yadm"
 
 eval "$(zoxide init zsh)"
 
+source /opt/ros/humble/setup.zsh
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
