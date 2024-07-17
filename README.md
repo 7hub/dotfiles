@@ -3,8 +3,9 @@
 
 ## install git , neovim, zsh, gnu.stow, fzf, tmux
 ```bash
-$ sudo apt install fzf git zsh
-$ sudo apt install zoxide git 
+$ sudo apt install fzf git zsh ripgrep 
+$ sudo apt xsel # copy clipboard
+$ sudo apt install zoxide git  
 $ cd ~
 $ git clone https://github.com/LazyVim/starter ~/.config/nvim
 $ rm -rf ~/.config/nvim/.git
