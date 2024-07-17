@@ -16,6 +16,17 @@ $ rm -rf ~/.config/nvim/.git
 sudo apt install yadm
 cd ~
 yadm pull 
+
+
+## install `oh-my-tmux`
+
+```
+$ cd
+$ git clone https://github.com/gpakosz/.tmux.git
+$ ln -s -f .tmux/.tmux.conf
+$ cp .tmux/.tmux.conf.local .
+```
+
 ```
 
 ```
