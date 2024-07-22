@@ -4,10 +4,11 @@
         "workspaces": {
             "file:///home/hq/dev_ws/src/tesseract_planning/tesseract_motion_planners": "__default__profile__",
             "file:///home/hq/dev_ws/src/tesseract_ros2/tesseract_monitoring": "__default__profile__",
-            "file:///home/hq/dev_ws": "__default__profile__"
+            "file:///home/hq/dev_ws": "__default__profile__",
+            "file:///home/hq/ws_ros2": "__default__profile__"
         },
         "emptyWindows": {
-            "1717932970456": "__default__profile__"
+            "1721469278559": "__default__profile__"
         }
     },
     "profileAssociationsMigration": true,
@@ -18,31 +19,25 @@
         "workspaces": [],
         "folders": [
             {
-                "folderUri": "file:///home/hq/dev_ws/src/tesseract_planning/tesseract_motion_planners"
-            },
-            {
-                "folderUri": "file:///home/hq/dev_ws/src/tesseract_ros2/tesseract_monitoring"
-            },
-            {
-                "folderUri": "file:///home/hq/dev_ws"
+                "folderUri": "file:///home/hq/ws_ros2"
             }
         ],
         "emptyWindows": [
             {
-                "backupFolder": "1717932970456"
+                "backupFolder": "1721469278559"
             }
         ]
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/hq/dev_ws",
-            "backupPath": "/home/hq/.config/Code/Backups/5fe63355014b85ac779eddae0972a2e3",
+            "folder": "file:///home/hq/ws_ros2",
+            "backupPath": "/home/hq/.config/Code/Backups/acaf7f71d1a88125755c06b2b9a93122",
             "uiState": {
                 "mode": 0,
-                "x": 167,
-                "y": 64,
-                "width": 1024,
-                "height": 752
+                "x": 0,
+                "y": 1477,
+                "width": 1920,
+                "height": 1043
             }
         },
         "openedWindows": []
@@ -85,7 +80,8 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor"
+                                    "label": "&&Reopen Closed Editor",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -94,12 +90,12 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "external": "file:///home/hq/dev_ws",
-                                        "path": "/home/hq/dev_ws",
+                                        "external": "file:///home/hq/ws_ros2",
+                                        "path": "/home/hq/ws_ros2",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/dev_ws"
+                                    "label": "~/ws_ros2"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -179,13 +175,6 @@
                         "label": "Share",
                         "submenu": {
                             "items": [
-                                {
-                                    "id": "github.copyVscodeDevLinkFile",
-                                    "label": "Copy vscode.dev Link"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
                                 {
                                     "id": "workbench.profiles.actions.exportProfile",
                                     "label": "Export Profile (Default)..."
@@ -513,8 +502,7 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleMenuBar",
-                                    "label": "Menu &&Bar",
-                                    "checked": true
+                                    "label": "Menu &&Bar"
                                 },
                                 {
                                     "id": "workbench.action.toggleSidebarVisibility",

@@ -72,7 +72,12 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
 export FZF_BASE=/usr/bin/
-plugins=(git fzf zoxide)
+plugins=(git
+  fzf
+  zoxide 
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  ros)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,9 +114,10 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias y="yadm"
 alias clc="clear"
-alias cd="z"
+#alias cd="z"
 
 
 source /opt/ros/humble/setup.zsh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+source /usr/share/gazebo/setup.sh
 
