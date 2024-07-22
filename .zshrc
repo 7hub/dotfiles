@@ -76,7 +76,7 @@ plugins=(git
   zoxide 
   zsh-autosuggestions
   fzf
-  fzf-zsh-plugin
+  #fzf-zsh-plugin
   ros)
 
 
@@ -118,7 +118,6 @@ alias clc="clear"
 #alias cd="z"
 #
 #
-
 
 source /opt/ros/humble/setup.zsh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh

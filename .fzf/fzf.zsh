@@ -26,9 +26,9 @@ source "${FZF_PATH}/shell/key-bindings.zsh"
 #$ source ~/.zshrc
 
 # alter filefind to fd 设置环境变量，如果已经自动设置了，就不用重复设置
-export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_DEFAULT_COMMAND='find --type file'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-export FZF_ALT_C_COMMAND="fd -t d . "
+export FZF_ALT_C_COMMAND="find -t d . "
 
 
 
