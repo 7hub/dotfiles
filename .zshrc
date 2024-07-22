@@ -71,13 +71,14 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
-export FZF_BASE=/usr/bin/
+#export FZF_BASE=/usr/bin/
 plugins=(git
-  fzf
   zoxide 
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  fzf
+  fzf-zsh-plugin
   ros)
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,6 +116,8 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias y="yadm"
 alias clc="clear"
 #alias cd="z"
+#
+#
 
 
 source /opt/ros/humble/setup.zsh
