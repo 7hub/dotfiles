@@ -1,6 +1,0 @@
-2024-06-09 22:20:59.081 [info] Log level: Trace
-2024-06-09 22:20:59.081 [info] Validating found git in: "git"
-2024-06-09 22:20:59.081 [info] Using git "2.43.0" from "git"
-2024-06-09 22:20:59.081 [trace] [swf] Scan workspace folders: []
-2024-06-09 22:20:59.081 [trace] [svte] Scan visible text editors. autoRepositoryDetection=true
-2024-06-09 22:20:59.081 [trace] [swsf] Scan workspace sub folders. autoRepositoryDetection=true

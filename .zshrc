@@ -123,3 +123,5 @@ source /opt/ros/humble/setup.zsh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 source /usr/share/gazebo/setup.sh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -5,11 +5,14 @@
             "file:///home/hq/dev_ws/src/tesseract_planning/tesseract_motion_planners": "__default__profile__",
             "file:///home/hq/dev_ws/src/tesseract_ros2/tesseract_monitoring": "__default__profile__",
             "file:///home/hq/dev_ws": "__default__profile__",
-            "file:///home/hq/ws_ros2": "__default__profile__"
+            "file:///home/hq/ws_ros2": "__default__profile__",
+            "file:///home/hq/ws_fp": "__default__profile__",
+            "file:///home/hq/ws_fp/src": "__default__profile__",
+            "file:///home/hq/code/kdl-tutorials": "__default__profile__",
+            "file:///home/hq/code/ws_robot": "__default__profile__",
+            "file:///home/hq/ros2_ws": "__default__profile__"
         },
-        "emptyWindows": {
-            "1721469278559": "__default__profile__"
-        }
+        "emptyWindows": {}
     },
     "profileAssociationsMigration": true,
     "telemetry.sqmId": "",
@@ -19,25 +22,21 @@
         "workspaces": [],
         "folders": [
             {
-                "folderUri": "file:///home/hq/ws_ros2"
+                "folderUri": "file:///home/hq/ros2_ws"
             }
         ],
-        "emptyWindows": [
-            {
-                "backupFolder": "1721469278559"
-            }
-        ]
+        "emptyWindows": []
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/hq/ws_ros2",
-            "backupPath": "/home/hq/.config/Code/Backups/acaf7f71d1a88125755c06b2b9a93122",
+            "folder": "file:///home/hq/ros2_ws",
+            "backupPath": "/home/hq/.config/Code/Backups/2e6bba3c1214ffca49339eedeefff224",
             "uiState": {
                 "mode": 0,
                 "x": 0,
-                "y": 1477,
-                "width": 1920,
-                "height": 1043
+                "y": 64,
+                "width": 1722,
+                "height": 933
             }
         },
         "openedWindows": []
@@ -85,6 +84,61 @@
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/ros2_ws",
+                                        "path": "/home/hq/ros2_ws",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/ros2_ws"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_robot",
+                                        "path": "/home/hq/code/ws_robot",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_robot"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/kdl-tutorials",
+                                        "path": "/home/hq/code/kdl-tutorials",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/kdl-tutorials"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/ws_fp/src",
+                                        "path": "/home/hq/ws_fp/src",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/ws_fp/src"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/ws_fp",
+                                        "path": "/home/hq/ws_fp",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/ws_fp"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -175,6 +229,13 @@
                         "label": "Share",
                         "submenu": {
                             "items": [
+                                {
+                                    "id": "github.copyVscodeDevLinkFile",
+                                    "label": "Copy vscode.dev Link"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
                                 {
                                     "id": "workbench.profiles.actions.exportProfile",
                                     "label": "Export Profile (Default)..."
@@ -1763,7 +1824,7 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 270,
+            "sideBarWidth": 275,
             "statusBarHeight": 22,
             "windowBorder": false
         }
