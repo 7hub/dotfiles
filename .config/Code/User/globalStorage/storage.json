@@ -10,7 +10,11 @@
             "file:///home/hq/ws_fp/src": "__default__profile__",
             "file:///home/hq/code/kdl-tutorials": "__default__profile__",
             "file:///home/hq/code/ws_robot": "__default__profile__",
-            "file:///home/hq/ros2_ws": "__default__profile__"
+            "file:///home/hq/ros2_ws": "__default__profile__",
+            "file:///home/hq/code/staubli_experimental": "__default__profile__",
+            "file:///home/hq/code/ws_robot/src/ros2_robot1": "__default__profile__",
+            "file:///home/hq/code/ws_fp": "__default__profile__",
+            "file:///home/hq/code/staubli": "__default__profile__"
         },
         "emptyWindows": {}
     },
@@ -22,24 +26,56 @@
         "workspaces": [],
         "folders": [
             {
-                "folderUri": "file:///home/hq/ros2_ws"
+                "folderUri": "file:///home/hq/code/staubli_experimental"
+            },
+            {
+                "folderUri": "file:///home/hq/code/ws_robot/src/ros2_robot1"
+            },
+            {
+                "folderUri": "file:///home/hq/code/ws_fp"
+            },
+            {
+                "folderUri": "file:///home/hq/code/staubli"
             }
         ],
         "emptyWindows": []
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/hq/ros2_ws",
-            "backupPath": "/home/hq/.config/Code/Backups/2e6bba3c1214ffca49339eedeefff224",
+            "folder": "file:///home/hq/code/staubli_experimental",
+            "backupPath": "/home/hq/.config/Code/Backups/9847348d40ca35568185fc8570a52e98",
             "uiState": {
-                "mode": 0,
-                "x": 0,
-                "y": 64,
-                "width": 1722,
-                "height": 933
+                "mode": 1,
+                "x": 1987,
+                "y": 53,
+                "width": 1759,
+                "height": 998
             }
         },
-        "openedWindows": []
+        "openedWindows": [
+            {
+                "folder": "file:///home/hq/code/staubli_experimental",
+                "backupPath": "/home/hq/.config/Code/Backups/9847348d40ca35568185fc8570a52e98",
+                "uiState": {
+                    "mode": 1,
+                    "x": 1987,
+                    "y": 53,
+                    "width": 1759,
+                    "height": 998
+                }
+            },
+            {
+                "folder": "file:///home/hq/code/staubli",
+                "backupPath": "/home/hq/.config/Code/Backups/e386b3dcab1fd142af4107e0967a0dea",
+                "uiState": {
+                    "mode": 0,
+                    "x": 408,
+                    "y": 273,
+                    "width": 1024,
+                    "height": 768
+                }
+            }
+        ]
     },
     "lastKnownMenubarData": {
         "menus": {
@@ -79,11 +115,54 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor",
-                                    "enabled": false
+                                    "label": "&&Reopen Closed Editor"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/staubli",
+                                        "path": "/home/hq/code/staubli",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/staubli"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_fp",
+                                        "path": "/home/hq/code/ws_fp",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_fp"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_robot/src/ros2_robot1",
+                                        "path": "/home/hq/code/ws_robot/src/ros2_robot1",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_robot/src/ros2_robot1"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/staubli_experimental",
+                                        "path": "/home/hq/code/staubli_experimental",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/staubli_experimental"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -152,26 +231,51 @@
                                     "label": "~/ws_ros2"
                                 },
                                 {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/dev_ws/src/tesseract_ros2/tesseract_monitoring",
-                                        "path": "/home/hq/dev_ws/src/tesseract_ros2/tesseract_monitoring",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/dev_ws/src/tesseract_ros2/tesseract_monitoring"
+                                    "id": "vscode.menubar.separator"
                                 },
                                 {
-                                    "id": "openRecentFolder",
+                                    "id": "openRecentFile",
                                     "uri": {
                                         "$mid": 1,
-                                        "external": "file:///home/hq/dev_ws/src/tesseract_planning/tesseract_motion_planners",
-                                        "path": "/home/hq/dev_ws/src/tesseract_planning/tesseract_motion_planners",
+                                        "external": "file:///home/hq/code/ws_fp/src/my_robot_bringup/launch/lifecycle_test.launch.xml",
+                                        "path": "/home/hq/code/ws_fp/src/my_robot_bringup/launch/lifecycle_test.launch.xml",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "~/dev_ws/src/tesseract_planning/tesseract_motion_planners"
+                                    "label": "~/code/ws_fp/src/my_robot_bringup/launch/lifecycle_test.launch.xml"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_fp/src/my_robot_bringup/launch/final_project_turtlebot.launch.xml",
+                                        "path": "/home/hq/code/ws_fp/src/my_robot_bringup/launch/final_project_turtlebot.launch.xml",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_fp/src/my_robot_bringup/launch/final_project_turtlebot.launch.xml"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_fp/src/my_robot_bringup/launch/final_project.launch.xml",
+                                        "path": "/home/hq/code/ws_fp/src/my_robot_bringup/launch/final_project.launch.xml",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_fp/src/my_robot_bringup/launch/final_project.launch.xml"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/kdl-tutorials/kdl_tutorial_01/launch/app.launch.xml",
+                                        "path": "/home/hq/code/kdl-tutorials/kdl_tutorial_01/launch/app.launch.xml",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/kdl-tutorials/kdl_tutorial_01/launch/app.launch.xml"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -905,8 +1009,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1125,8 +1228,7 @@
                     },
                     {
                         "id": "workbench.action.debug.configure",
-                        "label": "Open &&Configurations",
-                        "enabled": false
+                        "label": "Open &&Configurations"
                     },
                     {
                         "id": "debug.addConfiguration",
@@ -1824,7 +1926,7 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 275,
+            "sideBarWidth": 344,
             "statusBarHeight": 22,
             "windowBorder": false
         }
