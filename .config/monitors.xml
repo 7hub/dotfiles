@@ -41,6 +41,24 @@
   <configuration>
     <logicalmonitor>
       <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1-2</connector>
+          <vendor>DEL</vendor>
+          <product>DELL P2418D</product>
+          <serial>6C3VD8410GVT</serial>
+        </monitorspec>
+        <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>59.950550079345703</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
       <y>1440</y>
       <scale>1</scale>
       <primary>yes</primary>
@@ -55,24 +73,6 @@
           <width>1920</width>
           <height>1080</height>
           <rate>60.007850646972656</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI-1-2</connector>
-          <vendor>DEL</vendor>
-          <product>DELL P2418D</product>
-          <serial>6C3VD8410GVT</serial>
-        </monitorspec>
-        <mode>
-          <width>2560</width>
-          <height>1440</height>
-          <rate>59.950550079345703</rate>
         </mode>
       </monitor>
     </logicalmonitor>

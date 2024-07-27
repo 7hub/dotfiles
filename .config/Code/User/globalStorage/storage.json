@@ -11,10 +11,16 @@
             "file:///home/hq/code/kdl-tutorials": "__default__profile__",
             "file:///home/hq/code/ws_robot": "__default__profile__",
             "file:///home/hq/ros2_ws": "__default__profile__",
-            "file:///home/hq/code/staubli_experimental": "__default__profile__",
             "file:///home/hq/code/ws_robot/src/ros2_robot1": "__default__profile__",
             "file:///home/hq/code/ws_fp": "__default__profile__",
-            "file:///home/hq/code/staubli": "__default__profile__"
+            "file:///home/hq/code/staubli/staubli": "__default__profile__",
+            "file:///home/hq/code/staubli": "__default__profile__",
+            "file:///home/hq/code/universal_robot": "__default__profile__",
+            "file:///home/hq/code/Universal_Robots_ROS2_Driver": "__default__profile__",
+            "file:///home/hq/code/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Description": "__default__profile__",
+            "file:///home/hq/code/Staubli_ROS2": "__default__profile__",
+            "file:///home/hq/code/ws_staubli/src": "__default__profile__",
+            "file:///home/hq/code/staubli_experimental": "__default__profile__"
         },
         "emptyWindows": {}
     },
@@ -26,16 +32,10 @@
         "workspaces": [],
         "folders": [
             {
+                "folderUri": "file:///home/hq/code/ws_staubli/src"
+            },
+            {
                 "folderUri": "file:///home/hq/code/staubli_experimental"
-            },
-            {
-                "folderUri": "file:///home/hq/code/ws_robot/src/ros2_robot1"
-            },
-            {
-                "folderUri": "file:///home/hq/code/ws_fp"
-            },
-            {
-                "folderUri": "file:///home/hq/code/staubli"
             }
         ],
         "emptyWindows": []
@@ -46,36 +46,13 @@
             "backupPath": "/home/hq/.config/Code/Backups/9847348d40ca35568185fc8570a52e98",
             "uiState": {
                 "mode": 1,
-                "x": 1987,
-                "y": 53,
-                "width": 1759,
-                "height": 998
+                "x": 586,
+                "y": 155,
+                "width": 1711,
+                "height": 1178
             }
         },
-        "openedWindows": [
-            {
-                "folder": "file:///home/hq/code/staubli_experimental",
-                "backupPath": "/home/hq/.config/Code/Backups/9847348d40ca35568185fc8570a52e98",
-                "uiState": {
-                    "mode": 1,
-                    "x": 1987,
-                    "y": 53,
-                    "width": 1759,
-                    "height": 998
-                }
-            },
-            {
-                "folder": "file:///home/hq/code/staubli",
-                "backupPath": "/home/hq/.config/Code/Backups/e386b3dcab1fd142af4107e0967a0dea",
-                "uiState": {
-                    "mode": 0,
-                    "x": 408,
-                    "y": 273,
-                    "width": 1024,
-                    "height": 768
-                }
-            }
-        ]
+        "openedWindows": []
     },
     "lastKnownMenubarData": {
         "menus": {
@@ -124,12 +101,89 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/hq/code/staubli_experimental",
+                                        "path": "/home/hq/code/staubli_experimental",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/staubli_experimental"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_staubli/src",
+                                        "path": "/home/hq/code/ws_staubli/src",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_staubli/src"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/Staubli_ROS2",
+                                        "path": "/home/hq/code/Staubli_ROS2",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/Staubli_ROS2"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Description",
+                                        "path": "/home/hq/code/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Description",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Description"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/Universal_Robots_ROS2_Driver",
+                                        "path": "/home/hq/code/Universal_Robots_ROS2_Driver",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/Universal_Robots_ROS2_Driver"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/universal_robot",
+                                        "path": "/home/hq/code/universal_robot",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/universal_robot"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
                                         "external": "file:///home/hq/code/staubli",
                                         "path": "/home/hq/code/staubli",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
                                     "label": "~/code/staubli"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/staubli/staubli",
+                                        "path": "/home/hq/code/staubli/staubli",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/staubli/staubli"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -154,84 +208,40 @@
                                     "label": "~/code/ws_robot/src/ros2_robot1"
                                 },
                                 {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/staubli_experimental",
-                                        "path": "/home/hq/code/staubli_experimental",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/staubli_experimental"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/ros2_ws",
-                                        "path": "/home/hq/ros2_ws",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/ros2_ws"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/ws_robot",
-                                        "path": "/home/hq/code/ws_robot",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/ws_robot"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/kdl-tutorials",
-                                        "path": "/home/hq/code/kdl-tutorials",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/kdl-tutorials"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/ws_fp/src",
-                                        "path": "/home/hq/ws_fp/src",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/ws_fp/src"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/ws_fp",
-                                        "path": "/home/hq/ws_fp",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/ws_fp"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/ws_ros2",
-                                        "path": "/home/hq/ws_ros2",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/ws_ros2"
-                                },
-                                {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/rviz/view_tx2_60l.rviz",
+                                        "path": "/home/hq/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/rviz/view_tx2_60l.rviz",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/rviz/view_tx2_60l.rviz"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/urdf/tx2_60l_macro.xacro",
+                                        "path": "/home/hq/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/urdf/tx2_60l_macro.xacro",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_staubli/src/Staubli_ROS2/staubli_tx2_60l_description/urdf/tx2_60l_macro.xacro"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/staubli_experimental/staubli_tx60_gazebo/launch/load_tx60.launch",
+                                        "path": "/home/hq/code/staubli_experimental/staubli_tx60_gazebo/launch/load_tx60.launch",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/staubli_experimental/staubli_tx60_gazebo/launch/load_tx60.launch"
                                 },
                                 {
                                     "id": "openRecentFile",
@@ -333,13 +343,6 @@
                         "label": "Share",
                         "submenu": {
                             "items": [
-                                {
-                                    "id": "github.copyVscodeDevLinkFile",
-                                    "label": "Copy vscode.dev Link"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
                                 {
                                     "id": "workbench.profiles.actions.exportProfile",
                                     "label": "Export Profile (Default)..."
@@ -1926,7 +1929,7 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 344,
+            "sideBarWidth": 384,
             "statusBarHeight": 22,
             "windowBorder": false
         }
