@@ -15,3 +15,4 @@ x-scheme-handler/http=microsoft-edge.desktop;
 application/xhtml+xml=microsoft-edge.desktop;
 text/html=microsoft-edge.desktop;
 x-scheme-handler/https=microsoft-edge.desktop;
+application/pdf=masterpdfeditor5.desktop;

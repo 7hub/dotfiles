@@ -152,11 +152,13 @@ alias clc="clear"
 alias bashconfig="nvim ~/.bashrc"
 alias ohmybash="nvim ~/.oh-my-bash"
 
+source /usr/share/gazebo/setup.bash
 source /opt/ros/humble/setup.bash
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 source $HOME/code/ws_tools/install/setup.bash
-source /usr/share/gazebo/setup.bash
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+source $HOME/ws_moveit/install/setup.bash
+
+#export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 # Set up fzf key bindings and fuzzy completion
 #eval "$(fzf --bash)"
