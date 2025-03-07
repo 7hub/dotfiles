@@ -119,6 +119,25 @@
   <configuration>
     <logicalmonitor>
       <x>0</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
       <y>0</y>
       <scale>1</scale>
       <monitor>
@@ -135,6 +154,8 @@
         </mode>
       </monitor>
     </logicalmonitor>
+  </configuration>
+  <configuration>
     <logicalmonitor>
       <x>0</x>
       <y>1080</y>
@@ -151,6 +172,63 @@
           <width>1920</width>
           <height>1080</height>
           <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1-2</connector>
+          <vendor>HPN</vendor>
+          <product>HP P27 G5</product>
+          <serial>CNC3301MXM</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>HPN</vendor>
+          <product>HP P27 G5</product>
+          <serial>CNC3301MXM</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
         </mode>
       </monitor>
     </logicalmonitor>

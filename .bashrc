@@ -172,3 +172,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.sass-cache,node_modules,build} --type f"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# automatically source RosTeamWorkspace if the .ros_team_ws file is present in your home folder.
+if [ -f ~/.ros_team_ws_rc ]; then
+  . ~/.ros_team_ws_rc
+fi

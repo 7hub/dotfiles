@@ -33,15 +33,23 @@
             "file:///home/hq/code/ws_ros2control": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls": "__default__profile__",
-            "file:///home/hq/code/ws_robot/src/pmac_controller": "__default__profile__",
-            "file:///home/hq/code/powerPMAC_ssh": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_10": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_14": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_15": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_3": "__default__profile__",
+            "file:///home/hq/code/ws_robot/pmac_bringup": "__default__profile__",
+            "file:///home/hq/code/ws_pmac/src/pmac": "__default__profile__",
+            "file:///home/hq/code/ws_robot/src/pmac_controller": "__default__profile__",
             "file:///home/hq/code/ws_robot/src": "__default__profile__",
-            "file:///home/hq/code/ws_robot": "__default__profile__"
+            "file:///home/hq/code/powerPMAC_ssh": "__default__profile__",
+            "file:///home/hq/code/ws_pmac/src": "__default__profile__",
+            "file:///home/hq/code/staubli_experimental/staubli_tx2_60_support": "__default__profile__",
+            "file:///home/hq/code": "__default__profile__",
+            "file:///home/hq/code/ws_pmac": "__default__profile__",
+            "file:///home/hq/code/ws_robot": "__default__profile__",
+            "file:///home/hq/code/pmac_robot": "__default__profile__",
+            "file:///home/hq/code/ros2_learners": "__default__profile__"
         },
         "emptyWindows": {}
     },
@@ -53,24 +61,24 @@
         "workspaces": [],
         "folders": [
             {
-                "folderUri": "file:///home/hq/code/ws_robot/src"
+                "folderUri": "file:///home/hq/code/pmac_robot"
             },
             {
-                "folderUri": "file:///home/hq/code/ws_robot"
+                "folderUri": "file:///home/hq/code/ros2_learners"
             }
         ],
         "emptyWindows": []
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/hq/code/ws_robot",
-            "backupPath": "/home/hq/.config/Code/Backups/560e19680ecf2a6a6ba1617b761b7b59",
+            "folder": "file:///home/hq/code/ros2_learners",
+            "backupPath": "/home/hq/.config/Code/Backups/f1c05cf5b03fa33fb76cdb1734f11179",
             "uiState": {
-                "mode": 1,
-                "x": 0,
-                "y": 0,
-                "width": 1748,
-                "height": 1440
+                "mode": 0,
+                "x": 289,
+                "y": 114,
+                "width": 1397,
+                "height": 789
             }
         },
         "openedWindows": []
@@ -135,6 +143,17 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_robot",
+                                        "path": "/home/hq/code/ws_robot",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_robot"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
                                         "external": "file:///home/hq/code/ws_robot/src",
                                         "path": "/home/hq/code/ws_robot/src",
                                         "scheme": "file"
@@ -146,23 +165,56 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_3",
+                                        "path": "/home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_3",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_3"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_15",
+                                        "path": "/home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_15",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_15"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_14",
+                                        "path": "/home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_14",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_14"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_10",
+                                        "path": "/home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_10",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/code/ws_ros2control/src/ros-controls/ros2_control_demos/example_10"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
                                         "external": "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos",
                                         "path": "/home/hq/code/ws_ros2control/src/ros-controls/ros2_control_demos",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
                                     "label": "~/code/ws_ros2control/src/ros-controls/ros2_control_demos"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/ws_robot",
-                                        "path": "/home/hq/code/ws_robot",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/ws_robot"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -196,50 +248,6 @@
                                     },
                                     "enabled": true,
                                     "label": "~/code/ws_ros2control/src/ros-controls"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/ws_ros2control/src",
-                                        "path": "/home/hq/code/ws_ros2control/src",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/ws_ros2control/src"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/ws_ros2control",
-                                        "path": "/home/hq/code/ws_ros2control",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/ws_ros2control"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/staubli_experimental",
-                                        "path": "/home/hq/code/staubli_experimental",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/staubli_experimental"
-                                },
-                                {
-                                    "id": "openRecentFolder",
-                                    "uri": {
-                                        "$mid": 1,
-                                        "external": "file:///home/hq/code/staubli_experimental/staubli_tx60_support",
-                                        "path": "/home/hq/code/staubli_experimental/staubli_tx60_support",
-                                        "scheme": "file"
-                                    },
-                                    "enabled": true,
-                                    "label": "~/code/staubli_experimental/staubli_tx60_support"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -388,13 +396,6 @@
                         "label": "Share",
                         "submenu": {
                             "items": [
-                                {
-                                    "id": "github.copyVscodeDevLinkFile",
-                                    "label": "Copy vscode.dev Link"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
                                 {
                                     "id": "workbench.profiles.actions.exportProfile",
                                     "label": "Export Profile (Default)..."
@@ -743,10 +744,6 @@
                                     "label": "&&Panel"
                                 },
                                 {
-                                    "id": "toggle.toggleCustomTitleBar",
-                                    "label": "Custom Title Bar"
-                                },
-                                {
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
@@ -941,6 +938,13 @@
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
+                                    "id": "workbench.action.splitEditorInGroup",
+                                    "label": "Split in &&Group"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
                                     "id": "workbench.action.moveEditorToNewWindow",
                                     "label": "&&Move Editor into New Window"
                                 },
@@ -1040,8 +1044,7 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "&&Word Wrap",
-                        "enabled": false
+                        "label": "&&Word Wrap"
                     }
                 ]
             },
@@ -1049,7 +1052,8 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back"
+                        "label": "&&Back",
+                        "enabled": false
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -1058,8 +1062,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1278,8 +1281,7 @@
                     },
                     {
                         "id": "workbench.action.debug.configure",
-                        "label": "Open &&Configurations",
-                        "enabled": false
+                        "label": "Open &&Configurations"
                     },
                     {
                         "id": "debug.addConfiguration",
@@ -1379,7 +1381,8 @@
                     },
                     {
                         "id": "workbench.action.terminal.split",
-                        "label": "&&Split Terminal"
+                        "label": "&&Split Terminal",
+                        "enabled": false
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1727,6 +1730,11 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+k ctrl+\\"
             },
+            "workbench.action.splitEditorInGroup": {
+                "label": "Ctrl+K Ctrl+Shift+\\",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
+            },
             "workbench.action.copyEditorToNewWindow": {
                 "label": "Ctrl+K O",
                 "isNative": false,
@@ -1971,9 +1979,10 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 35,
             "activityBarWidth": 48,
-            "sideBarWidth": 302,
+            "sideBarWidth": 251,
             "statusBarHeight": 22,
             "windowBorder": false
         }
-    }
+    },
+    "windowControlHeight": 35
 }

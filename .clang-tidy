@@ -16,7 +16,7 @@ Checks:          'performance-*,
                   readability-container-size-empty,
                   readability-identifier-naming,
                   '
-HeaderFilterRegex: '.*/moveit/task_constructor/.*\.h'
+HeaderFilterRegex: '.*/moveit/task_constructor/.*\.h.*\.hpp'
 AnalyzeTemporaryDtors: false
 CheckOptions:
   - key:             llvm-namespace-comment.ShortNamespaceLines
