@@ -9,9 +9,13 @@ import (
 )
 
 func TestDelimiterRegex(t *testing.T) {
-	// Valid regex
+	// Valid regex, but a single character -> string
 	delim := delimiterRegexp(".")
-	if delim.regex == nil || delim.str != nil {
+	if delim.regex != nil || *delim.str != "." {
+		t.Error(delim)
+	}
+	delim = delimiterRegexp("|")
+	if delim.regex != nil || *delim.str != "|" {
 		t.Error(delim)
 	}
 	// Broken regex -> string
@@ -168,7 +172,7 @@ func TestParseKeys(t *testing.T) {
 	if len(pairs) != 9 {
 		t.Error(9)
 	}
-	check(tui.CtrlM, "Return")
+	check(tui.Enter, "Return")
 	checkEvent(tui.Key(' '), "space")
 	check(tui.Tab, "tab")
 	check(tui.ShiftTab, "btab")
@@ -191,7 +195,7 @@ func TestParseKeys(t *testing.T) {
 	check(tui.ShiftLeft, "shift-left")
 	check(tui.ShiftRight, "shift-right")
 	check(tui.ShiftTab, "shift-tab")
-	check(tui.CtrlM, "Enter")
+	check(tui.Enter, "Enter")
 	check(tui.Backspace, "bspace")
 }
 

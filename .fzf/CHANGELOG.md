@@ -1,6 +1,385 @@
 CHANGELOG
 =========
 
+0.61.0
+------
+- Added `--ghost=TEXT` to display a ghost text when the input is empty
+  ```sh
+  # Display "Type to search" when the input is empty
+  fzf --ghost "Type to search"
+  ```
+- Bug fixes and improvements
+
+0.60.3
+------
+- Bug fixes and improvements
+    - [fish] Enable multiple history commands insertion (#4280) (@bitraid)
+    - [walker] Append '/' to directory entries on MSYS2 (#4281)
+    - Trim trailing whitespaces after processing ANSI sequences (#4282)
+    - Remove temp files before `become` when using `--tmux` option (#4283)
+    - Fix condition for using item numlines cache (#4285) (@alex-huff)
+    - Make `--accept-nth` compatible with `--select-1` (#4287)
+    - Increase the query length limit from 300 to 1000 (#4292)
+    - [windows] Prevent fzf from consuming user input while paused (#4260)
+
+0.60.2
+------
+- Template for `--with-nth` and `--accept-nth` now supports `{n}` which evaluates to the zero-based ordinal index of the item
+- Fixed a regression that caused the last field in the "nth" expression to be trimmed when a regular expression delimiter is used
+    - Thanks to @phanen for the fix
+- Fixed 'jump' action when the pointer is an empty string
+
+0.60.1
+------
+- Bug fixes and minor improvements
+    - Built-in walker now prints directory entries with a trailing slash
+    - Fixed a bug causing unexpected behavior with [fzf-tab](https://github.com/Aloxaf/fzf-tab). Please upgrade if you use it.
+- Thanks to @alexeisersun, @bitraid, @Lompik, and @fsc0 for the contributions
+
+0.60.0
+------
+_Release highlights: https://junegunn.github.io/fzf/releases/0.60.0/_
+
+- Added `--accept-nth` for choosing output fields
+  ```sh
+  ps -ef | fzf --multi --header-lines 1 | awk '{print $2}'
+  # Becomes
+  ps -ef | fzf --multi --header-lines 1 --accept-nth 2
+
+  git branch | fzf | cut -c3-
+  # Can be rewritten as
+  git branch | fzf --accept-nth -1
+  ```
+- `--accept-nth` and `--with-nth` now support a template that includes multiple field index expressions in curly braces
+  ```sh
+  echo foo,bar,baz | fzf --delimiter , --accept-nth '{1}, {3}, {2}'
+    # foo, baz, bar
+
+  echo foo,bar,baz | fzf --delimiter , --with-nth '{1},{3},{2},{1..2}'
+    # foo,baz,bar,foo,bar
+  ```
+- Added `exclude` and `exclude-multi` actions for dynamically excluding items
+  ```sh
+  seq 100 | fzf --bind 'ctrl-x:exclude'
+
+  # 'exclude-multi' will exclude the selected items or the current item
+  seq 100 | fzf --multi --bind 'ctrl-x:exclude-multi'
+  ```
+- Preview window now prints wrap indicator when wrapping is enabled
+  ```sh
+  seq 100 | xargs | fzf --wrap --preview 'echo {}' --preview-window wrap
+  ```
+- Bug fixes and improvements
+
+0.59.0
+------
+_Release highlights: https://junegunn.github.io/fzf/releases/0.59.0/_
+
+- Prioritizing file name matches (#4192)
+    - Added a new tiebreak option `pathname` for prioritizing file name matches
+    - `--scheme=path` now sets `--tiebreak=pathname,length`
+    - fzf will automatically choose `path` scheme
+        * when the input is a TTY device, where fzf would start its built-in walker or run `$FZF_DEFAULT_COMMAND` which is usually a command for listing files,
+        * but not when `reload` or `transform` action is bound to `start` event, because in that case, fzf can't be sure of the input type.
+- Added `--header-lines-border` to display header from `--header-lines` with a separate border
+  ```sh
+  # Use --header-lines-border to separate two headers
+  ps -ef | fzf --style full --layout reverse --header-lines 1 \
+               --bind 'ctrl-r:reload(ps -ef)' --header 'Press CTRL-R to reload' \
+               --header-lines-border bottom --no-list-border
+  ```
+- `click-header` event now sets `$FZF_CLICK_HEADER_WORD` and `$FZF_CLICK_HEADER_NTH`. You can use them to implement a clickable header for changing the search scope using the new `transform-nth` action.
+  ```sh
+  # Click on the header line to limit search scope
+  ps -ef | fzf --style full --layout reverse --header-lines 1 \
+               --header-lines-border bottom --no-list-border \
+               --color fg:dim,nth:regular \
+               --bind 'click-header:transform-nth(
+                         echo $FZF_CLICK_HEADER_NTH
+                       )+transform-prompt(
+                         echo "$FZF_CLICK_HEADER_WORD> "
+                       )'
+  ```
+    - `$FZF_KEY` was updated to expose the type of the click. e.g. `click`, `ctrl-click`, etc. You can use it to implement a more sophisticated behavior.
+    - `kill` completion for bash and zsh were updated to use this feature
+- Added `--no-input` option to completely disable and hide the input section
+  ```sh
+  # Click header to trigger search
+  fzf --header '[src] [test]' --no-input --layout reverse \
+      --header-border bottom --input-border \
+      --bind 'click-header:transform-search:echo ${FZF_CLICK_HEADER_WORD:1:-1}'
+
+  # Vim-like mode switch
+  fzf --layout reverse-list --no-input \
+      --bind 'j:down,k:up,/:show-input+unbind(j,k,/)' \
+      --bind 'enter,esc,ctrl-c:transform:
+        if [[ $FZF_INPUT_STATE = enabled ]]; then
+          echo "rebind(j,k,/)+hide-input"
+        elif [[ $FZF_KEY = enter ]]; then
+          echo accept
+        else
+          echo abort
+        fi
+      '
+  ```
+    - You can later show the input section using `show-input` or `toggle-input` action, and hide it again using `hide-input`, or `toggle-input`.
+- Extended `{q}` placeholder to support ranges. e.g. `{q:1}`, `{q:2..}`, etc.
+- Added `search(...)` and `transform-search(...)` action to trigger an fzf search with an arbitrary query string. This can be used to extend the search syntax of fzf. In the following example, fzf will use the first word of the query to trigger ripgrep search, and use the rest of the query to perform fzf search within the result.
+  ```sh
+  export TEMP=$(mktemp -u)
+  trap 'rm -f "$TEMP"' EXIT
+
+  TRANSFORMER='
+    rg_pat={q:1}      # The first word is passed to ripgrep
+    fzf_pat={q:2..}   # The rest are passed to fzf
+
+    if ! [[ -r "$TEMP" ]] || [[ $rg_pat != $(cat "$TEMP") ]]; then
+      echo "$rg_pat" > "$TEMP"
+      printf "reload:sleep 0.1; rg --column --line-number --no-heading --color=always --smart-case %q || true" "$rg_pat"
+    fi
+    echo "+search:$fzf_pat"
+  '
+  fzf --ansi --disabled \
+    --with-shell 'bash -c' \
+    --bind "start,change:transform:$TRANSFORMER"
+  ```
+- You can now bind actions to multiple keys and events at once by writing a comma-separated list of keys and events before the colon
+  ```sh
+  # Load 'ps -ef' output on start and reload it on CTRL-R
+  fzf --bind 'start,ctrl-r:reload:ps -ef'
+  ```
+- `--min-height` option now takes a number followed by `+`, which tells fzf to show at least that many items in the list section. The default value is now changed to `10+`.
+  ```sh
+  # You will only see the input section which takes 3 lines
+  fzf --style=full --height 1% --min-height 3
+
+  # You will see 3 items in the list section
+  fzf --style full --height 1% --min-height 3+
+  ```
+    - Shell integration scripts were updated to use `--min-height 20+` by default
+- `--header-lines` will be displayed at the top in `reverse-list` layout
+- Added `bell` action to ring the terminal bell
+  ```sh
+  # Press CTRL-Y to copy the current line to the clipboard and ring the bell
+  fzf --bind 'ctrl-y:execute-silent(echo -n {} | pbcopy)+bell'
+  ```
+- Added `toggle-bind` action
+- Bug fixes and improvements
+- Fixed fish script to support fish 3.1.2 or later (@bitraid)
+
+0.58.0
+------
+_Release highlights: https://junegunn.github.io/fzf/releases/0.58.0/_
+
+This version introduces three new border types, `--list-border`, `--input-border`, and `--header-border`, offering much greater flexibility for customizing the user interface.
+
+<img src="https://raw.githubusercontent.com/junegunn/i/master/fzf-4-borders.png" />
+
+Also, fzf now offers "style presets" for quick customization, which can be activated using the `--style` option.
+
+| Preset    | Screenshot                                                                             |
+| :---      | :---                                                                                   |
+| `default` | <img src="https://raw.githubusercontent.com/junegunn/i/master/fzf-style-default.png"/> |
+| `full`    | <img src="https://raw.githubusercontent.com/junegunn/i/master/fzf-style-full.png"/>    |
+| `minimal` | <img src="https://raw.githubusercontent.com/junegunn/i/master/fzf-style-minimal.png"/> |
+
+- Style presets (#4160)
+    - `--style=full[:BORDER_STYLE]`
+    - `--style=default`
+    - `--style=minimal`
+- Border and label for the list section (#4148)
+    - Options
+        - `--list-border[=STYLE]`
+        - `--list-label=LABEL`
+        - `--list-label-pos=COL[:bottom]`
+    - Colors
+        - `list-fg`
+        - `list-bg`
+        - `list-border`
+        - `list-label`
+    - Actions
+        - `change-list-label`
+        - `transform-list-label`
+- Border and label for the input section (prompt line and info line) (#4154)
+    - Options
+        - `--input-border[=STYLE]`
+        - `--input-label=LABEL`
+        - `--input-label-pos=COL[:bottom]`
+    - Colors
+        - `input-fg` (`query`)
+        - `input-bg`
+        - `input-border`
+        - `input-label`
+    - Actions
+        - `change-input-label`
+        - `transform-input-label`
+- Border and label for the header section (#4159)
+    - Options
+        - `--header-border[=STYLE]`
+        - `--header-label=LABEL`
+        - `--header-label-pos=COL[:bottom]`
+    - Colors
+        - `header-fg` (`header`)
+        - `header-bg`
+        - `header-border`
+        - `header-label`
+    - Actions
+        - `change-header-label`
+        - `transform-header-label`
+- Added `--preview-border[=STYLE]` as short for `--preview-window=border[-STYLE]`
+- Added new preview border style `line` which draws a single separator line between the preview window and the rest of the interface
+- fzf will now render a dashed line (`┈┈`) in each `--gap` for better visual separation.
+  ```sh
+  # All bash/zsh functions, highlighted
+  declare -f |
+    perl -0 -pe 's/^}\n/}\0/gm' |
+    bat --plain --language bash --color always |
+    fzf --read0 --ansi --layout reverse --multi --highlight-line --gap
+  ```
+    * You can customize the line using `--gap-line[=STR]`.
+- You can specify `border-native` to `--tmux` so that native tmux border is used instead of `--border`. This can be useful if you start a different program from inside the popup.
+  ```sh
+  fzf --tmux border-native --bind 'enter:execute:less {}'
+  ```
+- Added `toggle-multi-line` action
+- Added `toggle-hscroll` action
+- Added `change-nth` action for dynamically changing the value of the `--nth` option
+  ```sh
+  # Start with --nth 1, then 2, then 3, then back to the default, 1
+  echo 'foo foobar foobarbaz' | fzf --bind 'space:change-nth(2|3|)' --nth 1 -q foo
+  ```
+- `--nth` parts of each line can now be rendered in a different text style
+  ```sh
+  # nth in a different style
+  ls -al | fzf --nth -1 --color nth:italic
+  ls -al | fzf --nth -1 --color nth:reverse
+  ls -al | fzf --nth -1 --color nth:reverse:bold
+
+  # Dim the other parts
+  ls -al | fzf --nth -1 --color nth:regular,fg:dim
+
+  # With 'change-nth'. The current nth option is exported as $FZF_NTH.
+  ps -ef | fzf --reverse --header-lines 1 --header-border bottom --input-border \
+             --color nth:regular,fg:dim \
+             --bind 'ctrl-n:change-nth(8..|1|2|3|4|5|6|7|)' \
+             --bind 'result:transform-prompt:echo "${FZF_NTH}> "'
+  ```
+- A single-character delimiter is now treated as a plain string delimiter rather than a regular expression delimiter, even if it's a regular expression meta-character.
+    - This means you can just write `--delimiter '|'` instead of escaping it as `--delimiter '\|'`
+- Bug fixes
+- Bug fixes and improvements in fish scripts (thanks to @bitraid)
+
+0.57.0
+------
+- You can now resize the preview window by dragging the border
+- Built-in walker improvements
+    - `--walker-root` can take multiple directory arguments. e.g. `--walker-root include src lib`
+    - `--walker-skip` can handle multi-component patterns. e.g. `--walker-skip target/build`
+- Removed long processing delay when displaying images in the preview window
+- `FZF_PREVIEW_*` environment variables are exported to all child processes (#4098)
+- Bug fixes in fish scripts
+
+0.56.3
+------
+- Bug fixes in zsh scripts
+    - fix(zsh): handle backtick trigger edge case (#4090)
+    - revert(zsh): remove 'fc -RI' call in the history widget (#4093)
+    - Thanks to @LangLangBart for the contributions
+
+0.56.2
+------
+- Bug fixes
+    - Fixed abnormal scrolling behavior when `--wrap` is set (#4083)
+    - [zsh] Fixed warning message when `ksh_arrays` is set (#4084)
+
+0.56.1
+------
+- Bug fixes and improvements
+    - Fixed a race condition which would cause fzf to present stale results after `reload` (#4070)
+    - `page-up` and `page-down` actions now work correctly with multi-line items (#4069)
+    - `{n}` is allowed in `SCROLL` expression in `--preview-window` (#4079)
+    - [zsh] Fixed regression in history loading with shared option (#4071)
+    - [zsh] Better command extraction in zsh completion (#4082)
+- Thanks to @LangLangBart, @jaydee-coder, @alex-huff, and @vejkse for the contributions
+
+0.56.0
+------
+- Added `--gap[=N]` option to display empty lines between items.
+    - This can be useful to visually separate adjacent multi-line items.
+      ```sh
+      # All bash functions, highlighted
+      declare -f | perl -0777 -pe 's/^}\n/}\0/gm' |
+        bat --plain --language bash --color always |
+        fzf --read0 --ansi --reverse --multi --highlight-line --gap
+      ```
+    - Or just to make the list easier to read. For single-line items, you probably want to set `--color gutter:-1` as well to hide the gutter.
+      ```sh
+      fzf --info inline-right --gap --color gutter:-1
+      ```
+- Added `noinfo` option to `--preview-window` to hide the scroll indicator in the preview window
+- Bug fixes
+    - Thanks to @LangLangBart, @akinomyoga, and @charlievieth for fixing the bugs
+
+0.55.0
+------
+_Release highlights: https://junegunn.github.io/fzf/releases/0.55.0/_
+
+- Added `exact-boundary-match` type to the search syntax. When a search term is single-quoted, fzf will search for the exact occurrences of the string with both ends at word boundaries.
+  ```sh
+  fzf --query "'here'" << EOF
+  come here
+  not there
+  EOF
+  ```
+- [bash] Fuzzy path completion is enabled for all commands
+    - 1. If the default completion is not already set
+    - 2. And if the current bash supports `complete -D` option
+    - However, fuzzy completion for some commands can be "dynamically" disabled by the dynamic completion loader
+    - See the comment in `__fzf_default_completion` function for more information
+- Comments are now allowed in `$FZF_DEFAULT_OPTS` and `$FZF_DEFAULT_OPTS_FILE`
+  ```sh
+  export FZF_DEFAULT_OPTS='
+    # Layout options
+    --layout=reverse
+    --info=inline-right   # Show info on the right side of the prompt line
+    # ...
+  '
+  ```
+- Hyperlinks (OSC 8) are now supported in the preview window and in the main window
+  ```sh
+  printf '<< \e]8;;http://github.com/junegunn/fzf\e\\Link to \e[32mfz\e[0mf\e]8;;\e\\ >>' | fzf --ansi
+
+  fzf --preview "printf '<< \e]8;;http://github.com/junegunn/fzf\e\\Link to \e[32mfz\e[0mf\e]8;;\e\\ >>'"
+  ```
+- The default `--ellipsis` is now `··` instead of `..`.
+- [vim] A spec can have `exit` callback that is called with the exit status of fzf
+    - This can be used to clean up temporary resources or restore the original state when fzf is closed without a selection
+- Fixed `--tmux bottom` when the status line is not at the bottom
+- Fixed extra scroll offset in multi-line mode (`--read0` or `--wrap`)
+- Added fallback `ps` command for `kill` completion on Cygwin
+
+0.54.3
+------
+- Fixed incompatibility of adaptive height specification and 'start:reload'
+  ```sh
+  # A regression in 0.54.0 would cause this to fail
+  fzf --height '~100%' --bind 'start:reload:seq 10'
+  ```
+- Environment variables are now available to `$FZF_DEFAULT_COMMAND`
+  ```sh
+  FZF_DEFAULT_COMMAND='echo $FZF_QUERY' fzf --query foo
+  ```
+
+0.54.2
+------
+- Fixed incorrect syntax highlighting of truncated multi-line entries
+- Updated GoReleaser to 2.1.0 to simplify notarization of macOS binaries
+    - macOS archives will be in `tar.gz` format instead of `zip` format since we no longer notarize the zip files but binaries
+- (Windows) Reverted a mintty fix in 0.54.0
+    - As a result, mouse may not work on mintty in fullscreen mode. However, fzf will correctly read non-ASCII input in fullscreen mode (`--no-height`).
+    - fzf unfortunately cannot read non-ASCII input when not in fullscreen mode on Windows. So if you need to input non-ASCII characters, add `--no-height` to your `$FZF_DEFAULT_OPTS`.
+    - Any help in fixing this issue will be appreciated (#3799, #3847).
+
 0.54.1
 ------
 - Updated [fastwalk](https://github.com/charlievieth/fastwalk) dependency for built-in directory walker
@@ -56,7 +435,7 @@ _Release highlights: https://junegunn.github.io/fzf/releases/0.54.0/_
 - fzf will not start the initial reader when `reload` or `reload-sync` is bound to `start` event. `fzf < /dev/null` or `: | fzf` are no longer required and extraneous `load` event will not fire due to the empty list.
   ```sh
   # Now this will work as expected. Previously, this would print an invalid header line.
-  # `fzf < /dev/null` or `: | fzf` would fix the problem, but then an extraneous 
+  # `fzf < /dev/null` or `: | fzf` would fix the problem, but then an extraneous
   # `load` event would fire and the header would be prematurely updated.
   fzf --header 'Loading ...' --header-lines 1 \
       --bind 'start:reload:sleep 1; ps -ef' \

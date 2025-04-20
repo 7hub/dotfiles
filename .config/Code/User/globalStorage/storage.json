@@ -13,7 +13,6 @@
             "file:///home/hq/code/ws_robot/src/ros2_robot1": "__default__profile__",
             "file:///home/hq/code/ws_fp": "__default__profile__",
             "file:///home/hq/code/staubli/staubli": "__default__profile__",
-            "file:///home/hq/code/staubli": "__default__profile__",
             "file:///home/hq/code/universal_robot": "__default__profile__",
             "file:///home/hq/code/Universal_Robots_ROS2_Driver": "__default__profile__",
             "file:///home/hq/code/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Description": "__default__profile__",
@@ -29,7 +28,6 @@
             "file:///home/hq/code/ws_moveit2/src": "__default__profile__",
             "file:///home/hq/code/ws_staubli/src": "__default__profile__",
             "file:///home/hq/code/staubli_experimental/staubli_tx60_support": "__default__profile__",
-            "file:///home/hq/code/staubli_experimental": "__default__profile__",
             "file:///home/hq/code/ws_ros2control": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src": "__default__profile__",
             "file:///home/hq/code/ws_ros2control/src/ros-controls": "__default__profile__",
@@ -47,41 +45,157 @@
             "file:///home/hq/code/staubli_experimental/staubli_tx2_60_support": "__default__profile__",
             "file:///home/hq/code": "__default__profile__",
             "file:///home/hq/code/ws_pmac": "__default__profile__",
-            "file:///home/hq/code/ws_robot": "__default__profile__",
             "file:///home/hq/code/pmac_robot": "__default__profile__",
-            "file:///home/hq/code/ros2_learners": "__default__profile__"
+            "file:///home/hq/code/ros2_learners": "__default__profile__",
+            "file:///home/hq/code/ws_pcl": "__default__profile__",
+            "file:///home/hq/linux-realtime/linux-realtime": "__default__profile__",
+            "file:///home/hq/code/ros_team_workspace": "__default__profile__",
+            "file:///home/hq/code/snp_automate_2023": "__default__profile__",
+            "file:///home/hq/code/snp_ws": "__default__profile__",
+            "vscode-remote://dev-container%2B7b22686f737450617468223a222f686f6d652f68712f636f64652f53436f6e74726f6c6c6572222c226c6f63616c446f636b6572223a66616c73652c22636f6e66696746696c65223a7b22246d6964223a312c22667350617468223a222f686f6d652f68712f636f64652f53436f6e74726f6c6c65722f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2265787465726e616c223a2266696c653a2f2f2f686f6d652f68712f636f64652f53436f6e74726f6c6c65722f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c2270617468223a222f686f6d652f68712f636f64652f53436f6e74726f6c6c65722f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e222c22736368656d65223a2266696c65227d7d/workspaces/SController": "__default__profile__",
+            "file:///home/hq/code/linux-realtime": "__default__profile__",
+            "file:///home/hq/code/linux-realtime/src/ethercat": "__default__profile__",
+            "file:///home/hq/code/ws_finalProject": "__default__profile__",
+            "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_controllers/joint_trajectory_controller": "__default__profile__",
+            "file:///home/hq/code/ws_ros2control/src/ros-controls/ros2_controllers/joint_state_broadcaster": "__default__profile__",
+            "file:///home/hq/code/ecat_ws/src/ethercat_driver_ros2/ethercat_generic_plugins/ethercat_generic_slave": "__default__profile__",
+            "file:///home/hq/code/ecat_ws/src/ethercat_driver_ros2/ethercat_generic_plugins": "__default__profile__",
+            "file:///home/hq/code/ecat_ws/src": "__default__profile__",
+            "file:///home/hq/code/ecat_ws": "327e1a93",
+            "file:///home/hq/code/ros2_ws": "327e1a93",
+            "file:///home/hq/code/SController": "327e1a93",
+            "file:///home/hq/code/ros2_control": "327e1a93",
+            "file:///home/hq/code/staubli": "327e1a93",
+            "file:///home/hq/code/ws_robot": "327e1a93",
+            "file:///home/hq/code/EC_Master/ecat_demo": "327e1a93",
+            "file:///home/hq/code/ws_staubli": "327e1a93",
+            "file:///home/hq/code/staubli_experimental": "327e1a93",
+            "file:///home/hq/code/EC_Master/src/EC-Master-V3.2-Linux-ARM_64Bit-Eval-rockchip": "-55e8016f",
+            "file:///home/hq/eclipse-workspace/hello_world": "-55e8016f"
         },
-        "emptyWindows": {}
+        "emptyWindows": {
+            "1744638753326": "327e1a93",
+            "1744638761099": "327e1a93",
+            "1744638929614": "327e1a93",
+            "1744682105216": "327e1a93",
+            "1744706988768": "-55e8016f",
+            "1744707003321": "-55e8016f",
+            "1745111482869": "327e1a93",
+            "1745113135848": "327e1a93"
+        }
     },
     "profileAssociationsMigration": true,
     "telemetry.sqmId": "",
     "telemetry.machineId": "663f78d8167e26bb2c3abe44bb46ee0bb98f8759d5a7b88bef69e09166c1e6a6",
-    "telemetry.devDeviceId": "f379f911-a483-4c0e-8dac-30dfa79cdbcc",
+    "telemetry.devDeviceId": "6106b831-c817-4420-8047-75799b7d3d53",
     "backupWorkspaces": {
         "workspaces": [],
         "folders": [
             {
-                "folderUri": "file:///home/hq/code/pmac_robot"
+                "folderUri": "file:///home/hq/code/SController"
             },
             {
-                "folderUri": "file:///home/hq/code/ros2_learners"
+                "folderUri": "file:///home/hq/code/ros2_control"
+            },
+            {
+                "folderUri": "file:///home/hq/code/ws_finalProject"
+            },
+            {
+                "folderUri": "file:///home/hq/code/staubli"
+            },
+            {
+                "folderUri": "file:///home/hq/code/ws_robot"
+            },
+            {
+                "folderUri": "file:///home/hq/code/EC_Master/ecat_demo"
+            },
+            {
+                "folderUri": "file:///home/hq/code/EC_Master/src/EC-Master-V3.2-Linux-ARM_64Bit-Eval-rockchip"
+            },
+            {
+                "folderUri": "file:///home/hq/eclipse-workspace/hello_world"
+            },
+            {
+                "folderUri": "file:///home/hq/code/ws_staubli"
+            },
+            {
+                "folderUri": "file:///home/hq/code/staubli_experimental"
             }
         ],
-        "emptyWindows": []
+        "emptyWindows": [
+            {
+                "backupFolder": "1744638753326"
+            },
+            {
+                "backupFolder": "1744638761099"
+            },
+            {
+                "backupFolder": "1744638929614"
+            },
+            {
+                "backupFolder": "1744682105216"
+            },
+            {
+                "backupFolder": "1744706988768"
+            },
+            {
+                "backupFolder": "1744707003321"
+            },
+            {
+                "backupFolder": "1745111482869"
+            },
+            {
+                "backupFolder": "1745113135848"
+            }
+        ]
     },
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/hq/code/ros2_learners",
-            "backupPath": "/home/hq/.config/Code/Backups/f1c05cf5b03fa33fb76cdb1734f11179",
+            "folder": "file:///home/hq/code/SController",
+            "backupPath": "/home/hq/.config/Code/Backups/0416036f25fa756bac04b90140851a24",
             "uiState": {
                 "mode": 0,
-                "x": 289,
-                "y": 114,
-                "width": 1397,
-                "height": 789
+                "x": 680,
+                "y": 320,
+                "width": 1200,
+                "height": 800
             }
         },
-        "openedWindows": []
+        "openedWindows": [
+            {
+                "folder": "file:///home/hq/code/ws_robot",
+                "backupPath": "/home/hq/.config/Code/Backups/560e19680ecf2a6a6ba1617b761b7b59",
+                "uiState": {
+                    "mode": 0,
+                    "x": 113,
+                    "y": 27,
+                    "width": 1654,
+                    "height": 1197
+                }
+            },
+            {
+                "folder": "file:///home/hq/code/SController",
+                "backupPath": "/home/hq/.config/Code/Backups/0416036f25fa756bac04b90140851a24",
+                "uiState": {
+                    "mode": 0,
+                    "x": 680,
+                    "y": 320,
+                    "width": 1200,
+                    "height": 800
+                }
+            },
+            {
+                "folder": "file:///home/hq/code/staubli_experimental",
+                "backupPath": "/home/hq/.config/Code/Backups/9847348d40ca35568185fc8570a52e98",
+                "uiState": {
+                    "mode": 0,
+                    "x": 680,
+                    "y": 320,
+                    "width": 1200,
+                    "height": 800
+                }
+            }
+        ]
     },
     "lastKnownMenubarData": {
         "menus": {
@@ -1960,29 +2074,52 @@
         }
     },
     "theme": "vs-dark",
-    "themeBackground": "#1f1f1f",
+    "themeBackground": "#282c34",
     "windowSplash": {
         "zoomLevel": 0,
         "baseTheme": "vs-dark",
         "colorInfo": {
             "foreground": "#cccccc",
-            "background": "#1f1f1f",
-            "editorBackground": "#1f1f1f",
-            "titleBarBackground": "#181818",
-            "activityBarBackground": "#181818",
-            "sideBarBackground": "#181818",
-            "statusBarBackground": "#181818",
-            "statusBarNoFolderBackground": "#1f1f1f"
+            "background": "#282c34",
+            "editorBackground": "#282c34",
+            "titleBarBackground": "#21252b",
+            "activityBarBackground": "#333842",
+            "sideBarBackground": "#21252b",
+            "statusBarBackground": "#21252b",
+            "statusBarNoFolderBackground": "#21252b"
         },
         "layoutInfo": {
             "sideBarSide": "left",
             "editorPartMinWidth": 220,
             "titleBarHeight": 35,
             "activityBarWidth": 48,
-            "sideBarWidth": 251,
+            "sideBarWidth": 317,
+            "auxiliarySideBarWidth": 0,
             "statusBarHeight": 22,
             "windowBorder": false
         }
     },
-    "windowControlHeight": 35
+    "windowControlHeight": 35,
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "auxiliarySideBarWidth": [
+                212,
+                [
+                    "e6a8a0e5ad698740153e7bad23fba03e",
+                    "9dcf78835a4a36984527a32e3c4a285b",
+                    "0dee21e9559a11a5bda2ec8a94747c59"
+                ]
+            ]
+        }
+    },
+    "userDataProfiles": [
+        {
+            "location": "327e1a93",
+            "name": "ROS2 C++"
+        },
+        {
+            "location": "-55e8016f",
+            "name": "C++ (Copy)"
+        }
+    ]
 }

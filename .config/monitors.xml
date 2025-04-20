@@ -2,7 +2,7 @@
   <configuration>
     <logicalmonitor>
       <x>0</x>
-      <y>1440</y>
+      <y>1080</y>
       <scale>1</scale>
       <primary>yes</primary>
       <monitor>
@@ -25,46 +25,27 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>HDMI-2</connector>
-          <vendor>DEL</vendor>
-          <product>DELL P2418D</product>
-          <serial>6C3VD8410GVT</serial>
+          <connector>DP-2</connector>
+          <vendor>HPN</vendor>
+          <product>HP P27 G5</product>
+          <serial>CNC3301MXM</serial>
         </monitorspec>
         <mode>
-          <width>2560</width>
-          <height>1440</height>
-          <rate>59.950550079345703</rate>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
         </mode>
       </monitor>
     </logicalmonitor>
   </configuration>
   <configuration>
     <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI-1-2</connector>
-          <vendor>DEL</vendor>
-          <product>DELL P2418D</product>
-          <serial>6C3VD8410GVT</serial>
-        </monitorspec>
-        <mode>
-          <width>2560</width>
-          <height>1440</height>
-          <rate>59.950550079345703</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>0</x>
+      <x>322</x>
       <y>1440</y>
       <scale>1</scale>
-      <primary>yes</primary>
       <monitor>
         <monitorspec>
-          <connector>eDP-1-1</connector>
+          <connector>eDP-1</connector>
           <vendor>CMN</vendor>
           <product>0x14c9</product>
           <serial>0x00000000</serial>
@@ -76,18 +57,37 @@
         </mode>
       </monitor>
     </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-2</connector>
+          <vendor>PHL</vendor>
+          <product>PHL 288E2</product>
+          <serial>UK52114000664</serial>
+        </monitorspec>
+        <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>59.950550079345703</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
   </configuration>
   <configuration>
     <logicalmonitor>
-      <x>1920</x>
+      <x>0</x>
       <y>0</y>
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DP-1-2-8</connector>
+          <connector>DP-1</connector>
           <vendor>HPN</vendor>
-          <product>HP E24u G4</product>
-          <serial>CN42480G0V</serial>
+          <product>HP P27 G5</product>
+          <serial>CNC3301MXM</serial>
         </monitorspec>
         <mode>
           <width>1920</width>
@@ -98,12 +98,12 @@
     </logicalmonitor>
     <logicalmonitor>
       <x>0</x>
-      <y>0</y>
+      <y>1080</y>
       <scale>1</scale>
       <primary>yes</primary>
       <monitor>
         <monitorspec>
-          <connector>eDP-1-1</connector>
+          <connector>eDP-1</connector>
           <vendor>CMN</vendor>
           <product>0x14c9</product>
           <serial>0x00000000</serial>
@@ -112,6 +112,45 @@
           <width>1920</width>
           <height>1080</height>
           <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>331</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-2</connector>
+          <vendor>DEL</vendor>
+          <product>DELL P2418D</product>
+          <serial>6C3VD8410GVT</serial>
+        </monitorspec>
+        <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>59.950550079345703</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -196,6 +235,123 @@
   </configuration>
   <configuration>
     <logicalmonitor>
+      <x>1920</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1-2-8</connector>
+          <vendor>HPN</vendor>
+          <product>HP E24u G4</product>
+          <serial>CN42480G0V</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1-2</connector>
+          <vendor>DEL</vendor>
+          <product>DELL P2418D</product>
+          <serial>6C3VD8410GVT</serial>
+        </monitorspec>
+        <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>59.950550079345703</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>0</x>
+      <y>1080</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-2</connector>
+          <vendor>HPN</vendor>
+          <product>HP E24u G4</product>
+          <serial>CN42480G0V</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
       <x>0</x>
       <y>1080</y>
       <scale>1</scale>
@@ -220,15 +376,49 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DP-2</connector>
+          <connector>DP-4</connector>
           <vendor>HPN</vendor>
-          <product>HP P27 G5</product>
-          <serial>CNC3301MXM</serial>
+          <product>HP E24u G4</product>
+          <serial>CN42480G0V</serial>
         </monitorspec>
         <mode>
           <width>1920</width>
           <height>1080</height>
           <rate>60</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-5</connector>
+          <vendor>HPN</vendor>
+          <product>HP E24u G4</product>
+          <serial>CN42480G0V</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60</rate>
+        </mode>
+      </monitor>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1</connector>
+          <vendor>CMN</vendor>
+          <product>0x14c9</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.007850646972656</rate>
         </mode>
       </monitor>
     </logicalmonitor>

@@ -9,7 +9,7 @@ application/xml=org.gnome.gedit.desktop
 
 [Added Associations]
 application/vnd.debian.binary-package=snap-store_ubuntu-software-local-file.desktop;
-application/xml=f3d.desktop;sublime-text_subl.desktop;code.desktop;org.gnome.gedit.desktop;
+application/xml=code.desktop;sublime-text_subl.desktop;f3d.desktop;org.gnome.gedit.desktop;
 text/plain=sublime-text_subl.desktop;
 x-scheme-handler/http=microsoft-edge.desktop;
 application/xhtml+xml=microsoft-edge.desktop;

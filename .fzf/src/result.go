@@ -16,6 +16,7 @@ type colorOffset struct {
 	offset [2]int32
 	color  tui.ColorPair
 	match  bool
+	url    *url
 }
 
 type Result struct {
@@ -68,6 +69,21 @@ func buildResult(item *Item, offsets []Offset, score int) Result {
 			}
 		case byLength:
 			val = item.TrimLength()
+		case byPathname:
+			if validOffsetFound {
+				// lastDelim := strings.LastIndexByte(item.text.ToString(), '/')
+				lastDelim := -1
+				s := item.text.ToString()
+				for i := len(s) - 1; i >= 0; i-- {
+					if s[i] == '/' || s[i] == '\\' {
+						lastDelim = i
+						break
+					}
+				}
+				if lastDelim <= minBegin {
+					val = util.AsUint16(minBegin - lastDelim)
+				}
+			}
 		case byBegin, byEnd:
 			if validOffsetFound {
 				whitePrefixLen := 0
@@ -103,11 +119,11 @@ func minRank() Result {
 	return Result{item: &minItem, points: [4]uint16{math.MaxUint16, 0, 0, 0}}
 }
 
-func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme, colBase tui.ColorPair, colMatch tui.ColorPair, current bool) []colorOffset {
+func (result *Result) colorOffsets(matchOffsets []Offset, nthOffsets []Offset, theme *tui.ColorTheme, colBase tui.ColorPair, colMatch tui.ColorPair, attrNth tui.Attr, current bool) []colorOffset {
 	itemColors := result.item.Colors()
 
 	// No ANSI codes
-	if len(itemColors) == 0 {
+	if len(itemColors) == 0 && len(nthOffsets) == 0 {
 		var offsets []colorOffset
 		for _, off := range matchOffsets {
 			offsets = append(offsets, colorOffset{offset: [2]int32{off[0], off[1]}, color: colMatch, match: true})
@@ -117,7 +133,7 @@ func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme,
 
 	// Find max column
 	var maxCol int32
-	for _, off := range matchOffsets {
+	for _, off := range append(matchOffsets, nthOffsets...) {
 		if off[1] > maxCol {
 			maxCol = off[1]
 		}
@@ -128,20 +144,29 @@ func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme,
 		}
 	}
 
-	cols := make([]int, maxCol)
+	type cellInfo struct {
+		index int
+		color bool
+		match bool
+		nth   bool
+	}
+
+	cols := make([]cellInfo, maxCol)
 	for colorIndex, ansi := range itemColors {
 		for i := ansi.offset[0]; i < ansi.offset[1]; i++ {
-			cols[i] = colorIndex + 1 // 1-based index of itemColors
+			cols[i] = cellInfo{colorIndex, true, false, false}
 		}
 	}
 
 	for _, off := range matchOffsets {
 		for i := off[0]; i < off[1]; i++ {
-			// Negative of 1-based index of itemColors
-			// - The extra -1 means highlighted
-			if cols[i] >= 0 {
-				cols[i] = cols[i]*-1 - 1
-			}
+			cols[i].match = true
+		}
+	}
+
+	for _, off := range nthOffsets {
+		for i := off[0]; i < off[1]; i++ {
+			cols[i].nth = true
 		}
 	}
 
@@ -151,7 +176,7 @@ func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme,
 	// ------------  ----  --  ----
 	//   ++++++++      ++++++++++
 	// --++++++++--  --++++++++++---
-	curr := 0
+	var curr cellInfo = cellInfo{0, false, false, false}
 	start := 0
 	ansiToColorPair := func(ansi ansiOffset, base tui.ColorPair) tui.ColorPair {
 		fg := ansi.color.fg
@@ -174,11 +199,19 @@ func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme,
 	}
 	var colors []colorOffset
 	add := func(idx int) {
-		if curr != 0 && idx > start {
-			if curr < 0 {
-				color := colMatch
-				if curr < -1 && theme.Colored {
-					origColor := ansiToColorPair(itemColors[-curr-2], colMatch)
+		if (curr.color || curr.nth || curr.match) && idx > start {
+			if curr.match {
+				var color tui.ColorPair
+				if curr.nth {
+					color = colBase.WithAttr(attrNth).Merge(colMatch)
+				} else {
+					color = colBase.Merge(colMatch)
+				}
+				var url *url
+				if curr.color && theme.Colored {
+					ansi := itemColors[curr.index]
+					url = ansi.color.url
+					origColor := ansiToColorPair(ansi, colMatch)
 					// hl or hl+ only sets the foreground color, so colMatch is the
 					// combination of either [hl and bg] or [hl+ and bg+].
 					//
@@ -189,18 +222,32 @@ func (result *Result) colorOffsets(matchOffsets []Offset, theme *tui.ColorTheme,
 					//      echo -e "\x1b[42mfoo\x1b[mbar" | fzf --ansi --color bg+:1,hl+:-1:underline
 					if color.Fg().IsDefault() && origColor.HasBg() {
 						color = origColor
+						if curr.nth {
+							color = color.WithAttr(attrNth)
+						}
 					} else {
 						color = origColor.MergeNonDefault(color)
 					}
 				}
 				colors = append(colors, colorOffset{
-					offset: [2]int32{int32(start), int32(idx)}, color: color, match: true})
-			} else {
-				ansi := itemColors[curr-1]
+					offset: [2]int32{int32(start), int32(idx)}, color: color, match: true, url: url})
+			} else if curr.color {
+				ansi := itemColors[curr.index]
+				color := ansiToColorPair(ansi, colBase)
+				if curr.nth {
+					color = color.WithAttr(attrNth)
+				}
 				colors = append(colors, colorOffset{
 					offset: [2]int32{int32(start), int32(idx)},
-					color:  ansiToColorPair(ansi, colBase),
-					match:  false})
+					color:  color,
+					match:  false,
+					url:    ansi.color.url})
+			} else {
+				colors = append(colors, colorOffset{
+					offset: [2]int32{int32(start), int32(idx)},
+					color:  colBase.WithAttr(attrNth),
+					match:  false,
+					url:    nil})
 			}
 		}
 	}

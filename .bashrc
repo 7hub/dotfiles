@@ -10,7 +10,9 @@ export OSH='/home/hq/.oh-my-bash'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 #OSH_THEME="font"
-OSH_THEME="powerline-multiline"
+#OSH_THEME="powerline-multiline"
+#OSH_THEME="random"
+OSH_THEME="agnoster"
 
 # If you set OSH_THEME to "random", you can ignore themes you don't like.
 #OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
@@ -107,20 +109,26 @@ plugins=(
   git
   bashmarks
   zoxide
+  #menu-complete
+  #fzf
+  #ruby
+  #zsh-autosuggestions
+  #fzf-zsh-plugin
+  #ros
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
 # Example format:
-#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
-#      plugins+=(tmux-autoattach)
-#  fi
+#if [ "$DISPLAY" ] || [ "$SSH" ]; then
+#  plugins+=(tmux-autoattach)
+#fi
 
 source "$OSH"/oh-my-bash.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
-
+export PATH=${PATH}:${HOME}/.local/bin
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -131,11 +139,8 @@ source "$OSH"/oh-my-bash.sh
 #  export EDITOR='nvim'
 #fi
 
-bind 'set show-all-if-ambiguous on'
-bind 'TAB:menu-complete'
-
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -156,7 +161,7 @@ source /usr/share/gazebo/setup.bash
 source /opt/ros/humble/setup.bash
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 source $HOME/code/ws_tools/install/setup.bash
-source $HOME/ws_moveit/install/setup.bash
+source $HOME/code/ws_moveit2/install/setup.bash
 
 #export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
@@ -169,11 +174,15 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 # 这行配置开启 ag 查找隐藏文件 及忽略 .git 文件
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 # or
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.sass-cache,node_modules,build} --type f"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.sass-cache,node_modules,build} --type f"
 
 # automatically source RosTeamWorkspace if the .ros_team_ws file is present in your home folder.
 if [ -f ~/.ros_team_ws_rc ]; then
   . ~/.ros_team_ws_rc
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+RosTeamWS_setup_ros2_aliases
+RosTeamWS_setup_ros2_exports
+export ROS_WS=$HOME/code/SController

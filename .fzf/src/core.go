@@ -96,7 +96,7 @@ func Run(opts *Options) (int, error) {
 	var chunkList *ChunkList
 	var itemIndex int32
 	header := make([]string, 0, opts.HeaderLines)
-	if len(opts.WithNth) == 0 {
+	if opts.WithNth == nil {
 		chunkList = NewChunkList(cache, func(item *Item, data []byte) bool {
 			if len(header) < opts.HeaderLines {
 				header = append(header, byteString(data))
@@ -109,6 +109,7 @@ func Run(opts *Options) (int, error) {
 			return true
 		})
 	} else {
+		nthTransformer := opts.WithNth(opts.Delimiter)
 		chunkList = NewChunkList(cache, func(item *Item, data []byte) bool {
 			tokens := Tokenize(byteString(data), opts.Delimiter)
 			if opts.Ansi && opts.Theme.Colored && len(tokens) > 1 {
@@ -127,8 +128,7 @@ func Run(opts *Options) (int, error) {
 					}
 				}
 			}
-			trans := Transform(tokens, opts.WithNth)
-			transformed := joinTokens(trans)
+			transformed := nthTransformer(tokens, itemIndex)
 			if len(header) < opts.HeaderLines {
 				header = append(header, transformed)
 				eventBox.Set(EvtHeader, header)
@@ -146,8 +146,25 @@ func Run(opts *Options) (int, error) {
 	// Process executor
 	executor := util.NewExecutor(opts.WithShell)
 
+	// Terminal I/O
+	var terminal *Terminal
+	var err error
+	var initialEnv []string
+	initialReload := opts.extractReloadOnStart()
+	if opts.Filter == nil {
+		terminal, err = NewTerminal(opts, eventBox, executor)
+		if err != nil {
+			return ExitError, err
+		}
+		if len(initialReload) > 0 {
+			var temps []string
+			initialReload, temps = terminal.replacePlaceholderInInitialCommand(initialReload)
+			initialEnv = terminal.environ()
+			defer removeFiles(temps)
+		}
+	}
+
 	// Reader
-	reloadOnStart := opts.reloadOnStart()
 	streamingFilter := opts.Filter != nil && !sort && !opts.Tac && !opts.Sync
 	var reader *Reader
 	if !streamingFilter {
@@ -155,12 +172,9 @@ func Run(opts *Options) (int, error) {
 			return chunkList.Push(data)
 		}, eventBox, executor, opts.ReadZero, opts.Filter == nil)
 
-		if reloadOnStart {
-			// reload or reload-sync action is bound to 'start' event, no need to start the reader
-			eventBox.Set(EvtReadNone, nil)
-		} else {
-			go reader.ReadSource(opts.Input, opts.WalkerRoot, opts.WalkerOpts, opts.WalkerSkip)
-		}
+		readyChan := make(chan bool)
+		go reader.ReadSource(opts.Input, opts.WalkerRoot, opts.WalkerOpts, opts.WalkerSkip, initialReload, initialEnv, readyChan)
+		<-readyChan
 	}
 
 	// Matcher
@@ -174,16 +188,37 @@ func Run(opts *Options) (int, error) {
 			forward = false
 		case byBegin:
 			forward = true
+		case byPathname:
+			withPos = true
+			forward = false
 		}
 	}
-	patternCache := make(map[string]*Pattern)
-	patternBuilder := func(runes []rune) *Pattern {
-		return BuildPattern(cache, patternCache,
-			opts.Fuzzy, opts.FuzzyAlgo, opts.Extended, opts.Case, opts.Normalize, forward, withPos,
-			opts.Filter == nil, opts.Nth, opts.Delimiter, runes)
-	}
+
+	nth := opts.Nth
 	inputRevision := revision{}
 	snapshotRevision := revision{}
+	patternCache := make(map[string]*Pattern)
+	denyMutex := sync.Mutex{}
+	denylist := make(map[int32]struct{})
+	clearDenylist := func() {
+		denyMutex.Lock()
+		if len(denylist) > 0 {
+			patternCache = make(map[string]*Pattern)
+		}
+		denylist = make(map[int32]struct{})
+		denyMutex.Unlock()
+	}
+	patternBuilder := func(runes []rune) *Pattern {
+		denyMutex.Lock()
+		denylistCopy := make(map[int32]struct{})
+		for k, v := range denylist {
+			denylistCopy[k] = v
+		}
+		denyMutex.Unlock()
+		return BuildPattern(cache, patternCache,
+			opts.Fuzzy, opts.FuzzyAlgo, opts.Extended, opts.Case, opts.Normalize, forward, withPos,
+			opts.Filter == nil, nth, opts.Delimiter, inputRevision, runes, denylistCopy)
+	}
 	matcher := NewMatcher(cache, patternBuilder, sort, opts.Tac, eventBox, inputRevision)
 
 	// Filtering mode
@@ -212,7 +247,7 @@ func Run(opts *Options) (int, error) {
 					}
 					return false
 				}, eventBox, executor, opts.ReadZero, false)
-			reader.ReadSource(opts.Input, opts.WalkerRoot, opts.WalkerOpts, opts.WalkerSkip)
+			reader.ReadSource(opts.Input, opts.WalkerRoot, opts.WalkerOpts, opts.WalkerSkip, initialReload, initialEnv, nil)
 		} else {
 			eventBox.Unwatch(EvtReadNew)
 			eventBox.WaitFor(EvtReadFin)
@@ -234,8 +269,7 @@ func Run(opts *Options) (int, error) {
 	}
 
 	// Synchronous search
-	sync := opts.Sync && !reloadOnStart
-	if sync {
+	if opts.Sync {
 		eventBox.Unwatch(EvtReadNew)
 		eventBox.WaitFor(EvtReadFin)
 	}
@@ -244,18 +278,14 @@ func Run(opts *Options) (int, error) {
 	go matcher.Loop()
 	defer matcher.Stop()
 
-	// Terminal I/O
-	terminal, err := NewTerminal(opts, eventBox, executor)
-	if err != nil {
-		return ExitError, err
-	}
+	// Handling adaptive height
 	maxFit := 0 // Maximum number of items that can fit on screen
 	padHeight := 0
 	heightUnknown := opts.Height.auto
 	if heightUnknown {
 		maxFit, padHeight = terminal.MaxFitAndPad()
 	}
-	deferred := opts.Select1 || opts.Exit0 || sync
+	deferred := opts.Select1 || opts.Exit0 || opts.Sync
 	go terminal.Loop()
 	if !deferred && !heightUnknown {
 		// Start right away
@@ -287,12 +317,17 @@ func Run(opts *Options) (int, error) {
 	var snapshot []*Chunk
 	var count int
 	restart := func(command commandSpec, environ []string) {
+		if !useSnapshot {
+			clearDenylist()
+		}
 		reading = true
 		chunkList.Clear()
 		itemIndex = 0
 		inputRevision.bumpMajor()
 		header = make([]string, 0, opts.HeaderLines)
-		go reader.restart(command, environ)
+		readyChan := make(chan bool)
+		go reader.restart(command, environ, readyChan)
+		<-readyChan
 	}
 
 	exitCode := ExitOk
@@ -322,9 +357,6 @@ func Run(opts *Options) (int, error) {
 					err = quitSignal.err
 					stop = true
 					return
-				case EvtReadNone:
-					reading = false
-					terminal.UpdateCount(0, false, nil)
 				case EvtReadNew, EvtReadFin:
 					if evt == EvtReadFin && nextCommand != nil {
 						restart(*nextCommand, nextEnviron)
@@ -334,7 +366,8 @@ func Run(opts *Options) (int, error) {
 					} else {
 						reading = reading && evt == EvtReadNew
 					}
-					if useSnapshot && evt == EvtReadFin {
+					if useSnapshot && evt == EvtReadFin { // reload-sync
+						clearDenylist()
 						useSnapshot = false
 					}
 					if !useSnapshot {
@@ -365,6 +398,25 @@ func Run(opts *Options) (int, error) {
 						command = val.command
 						environ = val.environ
 						changed = val.changed
+						bump := false
+						if len(val.denylist) > 0 && val.revision.compatible(inputRevision) {
+							denyMutex.Lock()
+							for _, itemIndex := range val.denylist {
+								denylist[itemIndex] = struct{}{}
+							}
+							denyMutex.Unlock()
+							bump = true
+						}
+						if val.nth != nil {
+							// Change nth and clear caches
+							nth = *val.nth
+							bump = true
+						}
+						if bump {
+							patternCache = make(map[string]*Pattern)
+							cache.Clear()
+							inputRevision.bumpMinor()
+						}
 						if command != nil {
 							useSnapshot = val.sync
 						}
@@ -425,8 +477,17 @@ func Run(opts *Options) (int, error) {
 									if len(opts.Expect) > 0 {
 										opts.Printer("")
 									}
+									transformer := func(item *Item) string {
+										return item.AsString(opts.Ansi)
+									}
+									if opts.AcceptNth != nil {
+										fn := opts.AcceptNth(opts.Delimiter)
+										transformer = func(item *Item) string {
+											return item.acceptNth(opts.Ansi, opts.Delimiter, fn)
+										}
+									}
 									for i := 0; i < count; i++ {
-										opts.Printer(val.Get(i).item.AsString(opts.Ansi))
+										opts.Printer(transformer(val.Get(i).item))
 									}
 									if count == 0 {
 										exitCode = ExitNoMatch
